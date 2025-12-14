@@ -75,17 +75,19 @@ public class LabProject1_DiegoNunez {
                             objeto = true;
                         }
                     }
-                    if (matriz[steeb_i][steeb_j].equals("^") || matriz[steeb_i][steeb_j].equals("\\") || matriz[steeb_i][steeb_j].equals("0") || matriz[steeb_i][steeb_j].equals("O") || matriz[steeb_i][steeb_j].equals("o") || matriz[steeb_i][steeb_j].equals("X")) {
-                        perder = true;
-                        break;
-                    }
+                    
                 }
+                
                 if (perder) {
                     System.out.println("Perdiste el juego...");
                     break;
                 }
+            if (matriz[steeb_i][steeb_j].equals("^") || matriz[steeb_i][steeb_j].equals("\\") || matriz[steeb_i][steeb_j].equals("0") || matriz[steeb_i][steeb_j].equals("O") || matriz[steeb_i][steeb_j].equals("o") || matriz[steeb_i][steeb_j].equals("X")) {
+                        perder = true;
+                        break;
+                    }
             }
-            matriz[steeb_i][steeb_j] = "S";
+            matriz[steeb_i][steeb_j] += "S";
         }
         if (ganador == 6) {
             System.out.println("Ganaste el juego!");
