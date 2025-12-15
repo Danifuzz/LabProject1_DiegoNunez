@@ -43,10 +43,10 @@ public class LabProject1_DiegoNunez {
                     + "D: Derecha\n"
                     + "F: Recojer/Poner caja");
             String comando = leer.nextLine();
-            for (int i = 0; i < comando.length(); i++) {
+            for (int i = 0; i < comando.length(); i++) { // lectura de los comandos
                 matriz[steeb_i][steeb_j].replace("S", "");
                 // Ciclo de movimiento
-                if (matriz[steeb_i][steeb_j].equals("j") || matriz[steeb_i][steeb_j].equals("jS")) {
+                if (matriz[steeb_i][steeb_j].equals("j") || matriz[steeb_i][steeb_j].equals("jS")) { //Asegurar que no se borren los objetos al pasar a traves de ellos
                     matriz[steeb_i][steeb_j] = ("j");
                 } else if (matriz[steeb_i][steeb_j].equals("D") || matriz[steeb_i][steeb_j].equals("DS")) {
                     matriz[steeb_i][steeb_j] = "D";
@@ -57,7 +57,7 @@ public class LabProject1_DiegoNunez {
                 } else {
                     matriz[steeb_i][steeb_j]=" ";
                 }
-                if (comando.charAt(i) == 'W') {
+                if (comando.charAt(i) == 'W') { //Movimientos
                     if (steeb_i > 0) {
                         if (matriz[steeb_i][steeb_j].equals("j") || matriz[steeb_i][steeb_j].equals("jS")) {
                             matriz[steeb_i][steeb_j] = ("j");
@@ -123,7 +123,7 @@ public class LabProject1_DiegoNunez {
                 if (matriz[steeb_i][steeb_j].equals(" ")) {
 
                 } else if (matriz[steeb_i][steeb_j] == "^" || matriz[steeb_i][steeb_j] == "\\" || matriz[steeb_i][steeb_j] == "O" || matriz[steeb_i][steeb_j] == "0" || matriz[steeb_i][steeb_j] == "o" || matriz[steeb_i][steeb_j] == "X" || matriz[steeb_i][steeb_j] == "/") {
-                    perder = 1;
+                    perder = 1; //Validacion de choques
                     break;
                 }
             }
