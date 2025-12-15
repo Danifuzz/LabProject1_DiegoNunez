@@ -64,6 +64,9 @@ public class LabProject1_DiegoNunez {
                         } 
                         steeb_i--;
 
+                    } else {
+                        System.out.println("Salio de los limites");
+                        break;
                     }
                 } else if (comando.charAt(i) == 'D') {
 
@@ -73,6 +76,9 @@ public class LabProject1_DiegoNunez {
                         }
                         steeb_j++;
 
+                    } else {
+                        System.out.println("Salio de los limites.");
+                        break;
                     }
                 } else if (comando.charAt(i) == 'A') {
                     if (steeb_j > 0) {
@@ -80,6 +86,9 @@ public class LabProject1_DiegoNunez {
                             matriz[steeb_i][steeb_j] = "j";
                         }
                         steeb_j--;
+                    } else {
+                        System.out.println("Salio de los limites.");
+                        break;
                     }
                 } else if (comando.charAt(i) == 'S') {
                     if (steeb_i < 24) {
@@ -87,6 +96,9 @@ public class LabProject1_DiegoNunez {
                             matriz[steeb_i][steeb_j] = "j";
                         }
                         steeb_i++;
+                    } else {
+                        System.out.println("Salio de los limites.");
+                        break;
                     }
                 } else if (comando.charAt(i) == 'F') {
                     if (objeto == 0 && matriz[steeb_i][steeb_j].contains("j")) {
