@@ -122,7 +122,7 @@ public class LabProject1_DiegoNunez {
                 Steeb = matriz[steeb_i][steeb_j];
                 if (matriz[steeb_i][steeb_j].equals(" ")) {
 
-                } else if (matriz[steeb_i][steeb_j] == "^" || matriz[steeb_i][steeb_j] == "\\" || matriz[steeb_i][steeb_j] == "O" || matriz[steeb_i][steeb_j] == "0" || matriz[steeb_i][steeb_j] == "o" || matriz[steeb_i][steeb_j] == "X" || matriz[steeb_i][steeb_j] == "/") {
+                } else if (matriz[steeb_i][steeb_j] == "-" ||matriz[steeb_i][steeb_j] == "^" || matriz[steeb_i][steeb_j] == "\\" || matriz[steeb_i][steeb_j] == "O" || matriz[steeb_i][steeb_j] == "0" || matriz[steeb_i][steeb_j] == "o" || matriz[steeb_i][steeb_j] == "X" || matriz[steeb_i][steeb_j] == "/") {
                     perder = 1; //Validacion de choques
                     break;
                 }
