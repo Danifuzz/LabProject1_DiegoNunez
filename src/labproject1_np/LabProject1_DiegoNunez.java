@@ -87,7 +87,7 @@ public class LabProject1_DiegoNunez {
                         objeto++;
                         matriz[steeb_i][steeb_j] = " ";
                         System.out.println("Objeto obtenido");
-                    } else {
+                    } else if (objeto==1) {
                         if ((steeb_i == 2 && steeb_j == 2) || (steeb_i == 12 && steeb_j == 2) ||  (steeb_i == 20 && steeb_j == 4) || (steeb_i == 0 && steeb_j == 23) || (steeb_i == 9 && steeb_j == 22) || (steeb_i == 18 && steeb_j == 20)) {
                             System.out.println("Ganador++");
 
