@@ -21,8 +21,9 @@ public class LabProject1_DiegoNunez {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        boolean perder = false;
-        boolean objeto = false;
+        String cajota = "";
+        int perder = 0;
+        int objeto = 0;
         int ganador = 0;
         int fila = 3;
         int columna = 13;
@@ -43,58 +44,93 @@ public class LabProject1_DiegoNunez {
                     + "F: Recojer/Poner caja");
             String comando = leer.nextLine();
             for (int i = 0; i < comando.length(); i++) {
-                matriz[steeb_i][steeb_j] = " ";
-                if (comando.charAt(i) == ',') {
-                } else if (comando.charAt(i) == 'W') {
-                    if (steeb_i-1 > -1) {
-                     steeb_i--;   
+                matriz[steeb_i][steeb_j].replace("S", "");
+                // Ciclo de movimiento
+                if (matriz[steeb_i][steeb_j].equals("j") || matriz[steeb_i][steeb_j].equals("jS")) {
+                    matriz[steeb_i][steeb_j] = ("j");
+                } else {
+                    matriz[steeb_i][steeb_j] = " ";
+                }
+                if (comando.charAt(i) == 'W') {
+                    if (steeb_i > 0) {
+                        if (matriz[steeb_i][steeb_j].equals("j") || matriz[steeb_i][steeb_j].equals("jS")) {
+                            matriz[steeb_i][steeb_j] = ("j");
+                        }
+                        steeb_i--;
+
                     }
                 } else if (comando.charAt(i) == 'D') {
-                    if (steeb_j+1 < 24) {
+
+                    if (steeb_i < 24) {
+                        if (matriz[steeb_i][steeb_j].equals("j") || matriz[steeb_i][steeb_j].equals("jS")) {
+                            matriz[steeb_i][steeb_j] = "j";
+                        }
                         steeb_j++;
-                    }
-                } else if (comando.charAt(i) == 'S') {
-                    if (steeb_i+1 < 24) {
-                        steeb_i++;
+
                     }
                 } else if (comando.charAt(i) == 'A') {
-                    if (steeb_j-1 > -1) {
+                    if (steeb_j > 0) {
+                        if (matriz[steeb_i][steeb_j].equals("j") || matriz[steeb_i][steeb_j].equals("jS")) {
+                            matriz[steeb_i][steeb_j] = "j";
+                        }
                         steeb_j--;
                     }
-                } else if (comando.charAt(i) == 'F') {
-                    if (objeto) {
-                        if (matriz[steeb_i][steeb_j].equals("D") || matriz[steeb_i][steeb_j].equals("H") || matriz[steeb_i][steeb_j].equals("L")) {
-                            ganador++;
-                            objeto = false;
+                } else if (comando.charAt(i) == 'S') {
+                    if (steeb_i < 24) {
+                        if (matriz[steeb_i][steeb_j].contains("j")) {
+                            matriz[steeb_i][steeb_j] = "j";
                         }
-                        matriz[steeb_i][steeb_j] = "j";
-                        objeto = false;
+                        steeb_i++;
+                    }
+                } else if (comando.charAt(i) == 'F') {
+                    if (objeto == 0 && matriz[steeb_i][steeb_j].contains("j")) {
+                        objeto++;
+                        matriz[steeb_i][steeb_j] = " ";
+                        System.out.println("Objeto obtenido");
                     } else {
-                        if (matriz[steeb_i][steeb_j] == "j") {
-                            matriz[steeb_i][steeb_j] = " ";
-                            objeto = true;
+                        if ((matriz[steeb_i][steeb_j].contains("D") || matriz[steeb_i][steeb_j].contains("H") || matriz[steeb_i][steeb_j].contains("L")) && objeto==1) {
+                            System.out.println("Ganador++");
+
+                            ganador++;
+                            objeto--;
+                            if (matriz[steeb_i][steeb_j].contains("D")) {
+                                matriz[steeb_i][steeb_j] += ("D");
+                            } else if (matriz[steeb_i][steeb_j].contains("H")) {
+                                matriz[steeb_i][steeb_j] += ("H");
+                            } else if (matriz[steeb_i][steeb_j].contains("L")) {
+                                matriz[steeb_i][steeb_j] += ("L");
+                            }
+                        } else {
+                            matriz[steeb_i][steeb_j] = "j";
+                            objeto--;
+                            System.out.println("Objeto depositado");
                         }
                     }
-                    
                 }
-                
-                if (perder) {
-                    System.out.println("Perdiste el juego...");
+                Steeb = matriz[steeb_i][steeb_j];
+                if (matriz[steeb_i][steeb_j].equals(" ")) {
+
+                } else if (matriz[steeb_i][steeb_j] == "^" || matriz[steeb_i][steeb_j] == "\\" || matriz[steeb_i][steeb_j] == "O" || matriz[steeb_i][steeb_j] == "0" || matriz[steeb_i][steeb_j] == "o" || matriz[steeb_i][steeb_j] == "X" || matriz[steeb_i][steeb_j] == "/") {
+                    perder = 1;
                     break;
                 }
-            if (matriz[steeb_i][steeb_j].equals("^") || matriz[steeb_i][steeb_j].equals("\\") || matriz[steeb_i][steeb_j].equals("0") || matriz[steeb_i][steeb_j].equals("O") || matriz[steeb_i][steeb_j].equals("o") || matriz[steeb_i][steeb_j].equals("X")) {
-                        perder = true;
-                        break;
-                    }
             }
-            matriz[steeb_i][steeb_j] += "S";
+            if (matriz[steeb_i][steeb_j].equals(" ")) {
+                matriz[steeb_i][steeb_j] = "S";
+            } else {
+                matriz[steeb_i][steeb_j] += "S";
+            }
+            if (perder == 1) {
+                break;
+            }
         }
         if (ganador == 6) {
             System.out.println("Ganaste el juego!");
-        } else {
+        } else if (perder == 1) {
             System.out.println("Chocaste! Perdiste.");
         }
     }
+
     public static void printMatriz(String[][] matriz) {
         System.out.println("");
         for (int i = 0; i < 24; i++) {
@@ -118,6 +154,7 @@ public class LabProject1_DiegoNunez {
             System.out.println("");
         }
     }
+
     public static String[][] GenerarMapa() {
         String[][] mat = new String[24][24];
 
