@@ -48,14 +48,20 @@ public class LabProject1_DiegoNunez {
                 // Ciclo de movimiento
                 if (matriz[steeb_i][steeb_j].equals("j") || matriz[steeb_i][steeb_j].equals("jS")) {
                     matriz[steeb_i][steeb_j] = ("j");
+                } else if (matriz[steeb_i][steeb_j].equals("D") || matriz[steeb_i][steeb_j].equals("DS")) {
+                    matriz[steeb_i][steeb_j] = "D";
+                } else if (matriz[steeb_i][steeb_j].equals("H") || matriz[steeb_i][steeb_j].equals("HS")) {
+                    matriz[steeb_i][steeb_j] = "H";
+                } else if (matriz[steeb_i][steeb_j].equals("L") || matriz[steeb_i][steeb_j].equals("LS")) {
+                    matriz[steeb_i][steeb_j] = "L";
                 } else {
-                    matriz[steeb_i][steeb_j] = " ";
+                    matriz[steeb_i][steeb_j]=" ";
                 }
                 if (comando.charAt(i) == 'W') {
                     if (steeb_i > 0) {
                         if (matriz[steeb_i][steeb_j].equals("j") || matriz[steeb_i][steeb_j].equals("jS")) {
                             matriz[steeb_i][steeb_j] = ("j");
-                        }
+                        } 
                         steeb_i--;
 
                     }
@@ -93,13 +99,7 @@ public class LabProject1_DiegoNunez {
 
                             ganador++;
                             objeto--;
-                            if (matriz[steeb_i][steeb_j].contains("D")) {
-                                matriz[steeb_i][steeb_j] += ("D");
-                            } else if (matriz[steeb_i][steeb_j].contains("H")) {
-                                matriz[steeb_i][steeb_j] += ("H");
-                            } else if (matriz[steeb_i][steeb_j].contains("L")) {
-                                matriz[steeb_i][steeb_j] += ("L");
-                            }
+                            
                         } else {
                             matriz[steeb_i][steeb_j] = "j";
                             objeto--;
@@ -123,7 +123,12 @@ public class LabProject1_DiegoNunez {
             if (perder == 1) {
                 break;
             }
-        }
+            if (matriz[steeb_i][steeb_j].contains("S")) {
+                
+            } else {
+            matriz[steeb_i][steeb_j] += "S";
+            }
+            }
         if (ganador == 6) {
             System.out.println("Ganaste el juego!");
         } else if (perder == 1) {
